@@ -1,6 +1,9 @@
 "use client";
 
 import { Calendar, Home, Inbox, Search, Settings, ChevronDown, User2, ChevronUp } from "lucide-react"
+import { MoonIcon, SunIcon } from "@radix-ui/react-icons"
+
+import { Button } from "@/components/ui/button"
 
 import {
   Sidebar,
@@ -25,7 +28,10 @@ import {
   } from "@/components/ui/dropdown-menu"
   
 
+import { useTheme } from "next-themes"
+
 import {signOut} from 'next-auth/react'
+import { useRouter } from "next/navigation";
 
 // Menu items.
 const items = [
@@ -57,6 +63,11 @@ const items = [
 ]
 
 export function AppSidebar() {
+
+  const { setTheme } = useTheme()
+
+  const router = useRouter();
+
   return (
     <Sidebar collapsible="icon" variant="floating">
         <SidebarHeader>
@@ -117,12 +128,31 @@ export function AppSidebar() {
                   side="top"
                   className="w-[--radix-popper-anchor-width]"
                 >
-                  <DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => router.push('/app/account')} >
                     <span>Account</span>
                   </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <span>Billing</span>
-                  </DropdownMenuItem>
+                  <SidebarMenu>
+                    <SidebarMenuItem>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <DropdownMenuItem>
+                              <span>Toggle theme</span>
+                            </DropdownMenuItem>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end">
+                            <DropdownMenuItem onClick={() => setTheme("light")}>
+                              Light
+                            </DropdownMenuItem>
+                            <DropdownMenuItem onClick={() => setTheme("dark")}>
+                              Dark
+                            </DropdownMenuItem>
+                            <DropdownMenuItem onClick={() => setTheme("system")}>
+                              System
+                            </DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                    </SidebarMenuItem>
+                  </SidebarMenu>
                   <DropdownMenuItem onClick={() => signOut()} >
                     <button>Sign out</button>
                   </DropdownMenuItem>
