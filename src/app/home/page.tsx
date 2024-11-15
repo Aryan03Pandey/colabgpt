@@ -87,7 +87,7 @@ function Home() {
             className="flex items-center space-x-2"
           >
             <ChefHat className="w-8 h-8 text-white" />
-            <span className="text-white text-xl font-bold font-satisfy">CulinaryCanvas</span>
+            <span className="text-white text-xl font-bold font-satisfy">Nutriwise</span>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -123,13 +123,13 @@ function Home() {
               <TypeAnimation
                 sequence={[
                   "Culinary Masterpieces",
-                  1000,
+                  1200,
                   "Flavorful Creations",
-                  1000,
+                  1200,
                   "Savory Delights",
-                  1000,
+                  1200,
                   "Tasty Innovations",
-                  1000,
+                  1200,
                 ]}
                 wrapper="span"
                 speed={50}
