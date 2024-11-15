@@ -65,7 +65,20 @@ const config: Config = {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
-  		}
+  		},
+		  animation: {
+			typing: 'typing 3.5s steps(30) 1s both, blink 0.75s step-end infinite',
+		  },
+		  keyframes: {
+			typing: {
+			  '0%': { width: '0' },
+			  '100%': { width: '100%' },
+			},
+			blink: {
+			  '0%, 50%': { borderColor: 'transparent' },
+			  '50%, 100%': { borderColor: '#fff' },
+			}
+		}
   	}
   },
   plugins: [require("tailwindcss-animate")],
